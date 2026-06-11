@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kiran Raj C N — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #11122A;
+    --bg-soft: #181A38;
+    --card: #1F2147;
+    --card-border: #2E3163;
+    --text: #F2F1FA;
+    --muted: #9C9CC4;
+    --mint: #4DFFC3;
+    --mint-dim: #1F6E55;
+    --coral: #FF6E8E;
+    --coral-dim: #6E2B3C;
+    --amber: #FFD23F;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background: var(--mint); color:#0A0B1A; }
+
+  a{ color: var(--mint); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: rgba(17,18,42,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--card-border);
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  nav .logo{
+    color: var(--text);
+    font-weight:500;
+  }
+  nav .logo span{ color: var(--mint); }
+  nav .links{
+    display:flex;
+    gap: 24px;
+  }
+  nav .links a{
+    color: var(--muted);
+    transition: color .2s ease;
+  }
+  nav .links a:hover{ color: var(--mint); text-decoration:none; }
+
+  /* ===== HERO ===== */
+  header.hero{
+    padding: 90px 0 70px;
+  }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--mint);
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{ content: "$ "; color: var(--muted); }
+  h1{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height:1.1;
+    margin-bottom: 18px;
+  }
+  h1 .accent{ color: var(--mint); }
+  .role{
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+
+  /* terminal */
+  .terminal{
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow:hidden;
+    max-width: 560px;
+    box-shadow: 0 20px 60px -30px rgba(77,255,195,0.25);
+  }
+  .terminal .bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding: 10px 14px;
+    background: #15172F;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .terminal .dot{ width:11px; height:11px; border-radius:50%; }
+  .dot.r{ background:#FF6E8E; }
+  .dot.y{ background:#FFD23F; }
+  .dot.g{ background:#4DFFC3; }
+  .terminal .title{
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .terminal pre{
+    padding: 18px 20px 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #C7C9F0;
+    overflow-x:auto;
+    white-space: pre-wrap;
+  }
+  .terminal .pos{ color: var(--mint); }
+  .terminal .neg{ color: var(--coral); }
+  .terminal .com{ color: var(--muted); }
+  .terminal .cursor{
+    display:inline-block;
+    width:8px; height:14px;
+    background: var(--mint);
+    vertical-align: middle;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* ===== SECTIONS ===== */
+  section{ padding: 60px 0; }
+  section + section{ border-top: 1px solid var(--card-border); }
+
+  .module-tag{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+  h2{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 22px;
+  }
+
+  /* ABOUT */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .about-text p{ color: var(--muted); max-width: 640px; }
+  .about-text p + p{ margin-top: 14px; }
+  .about-text strong{ color: var(--text); font-weight:600; }
+
+  /* SKILLS */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .skill-card{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .skill-card:hover{
+    transform: translateY(-3px);
+    border-color: var(--mint);
+  }
+  .skill-card .skill-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom: 12px;
+    font-family: var(--display);
+    font-weight:700;
+    font-size: 1.05rem;
+  }
+  .skill-card .skill-tag{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mint);
+    border: 1px solid var(--mint-dim);
+    background: rgba(77,255,195,0.07);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .skill-card p{ color: var(--muted); font-size: 0.92rem; }
+  .bar-track{
+    height: 6px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    margin-top: 14px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    background: linear-gradient(90deg, var(--mint), var(--amber));
+    border-radius: 999px;
+  }
+
+  /* PROJECT */
+  .project-card{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .project-head{
+    display:flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .project-title{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: 1.35rem;
+  }
+  .project-meta{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .project-card p.desc{ color: var(--muted); margin-bottom: 18px; max-width: 640px; }
+
+  .stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .stack span{
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .modules{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .module-item{
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--mint);
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+  }
+  .module-item .num{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mint);
+    margin-bottom: 4px;
+    display:block;
+  }
+  .module-item .name{ font-size: 0.92rem; font-weight:600; }
+
+  .project-links{
+    display:flex;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .project-links a{
+    display:inline-flex;
+    align-items:center;
+    gap: 6px;
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .project-links a:hover{
+    color: var(--mint);
+    border-color: var(--mint);
+    text-decoration:none;
+  }
+
+  /* DEMO */
+  .demo{
+    margin-top: 26px;
+    border-top: 1px dashed var(--card-border);
+    padding-top: 22px;
+  }
+  .demo .demo-label{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .demo-row{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .demo-row input{
+    flex:1;
+    min-width: 200px;
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 0.95rem;
+  }
+  .demo-row input:focus{ outline:none; border-color: var(--mint); }
+  .demo-row button{
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--mint);
+    color: #0A0B1A;
+    border:none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor:pointer;
+    font-weight:500;
+    transition: opacity .2s ease;
+  }
+  .demo-row button:hover{ opacity:0.85; }
+  .demo-result{
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 13px;
+    min-height: 24px;
+  }
+  .tag-pos{
+    color: var(--mint);
+    border:1px solid var(--mint-dim);
+    background: rgba(77,255,195,0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .tag-neg{
+    color: var(--coral);
+    border:1px solid var(--coral-dim);
+    background: rgba(255,110,142,0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .tag-neu{
+    color: var(--amber);
+    border:1px solid #6E5B1F;
+    background: rgba(255,210,63,0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .demo-note{
+    margin-top:10px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 16px;
+  }
+  .contact-card{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 22px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .contact-card:hover{
+    border-color: var(--mint);
+    transform: translateY(-3px);
+  }
+  .contact-card .label{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .contact-card .value{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: 1.05rem;
+    word-break: break-word;
+  }
+
+  footer{
+    padding: 30px 0;
+    text-align:center;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  footer .pos{ color: var(--mint); }
+
+  @media (max-width: 640px){
+    nav .links{ gap: 14px; }
+    header.hero{ padding: 60px 0 50px; }
+    .terminal pre{ font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">kiran<span>raj</span>.cn</div>
+    <div class="links">
+      <a href="#about">about</a>
+      <a href="#skills">stack</a>
+      <a href="#project">build</a>
+      <a href="#contact">connect</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">whoami</div>
+    <h1>Kiran Raj C N <br> building things with <span class="accent">data</span> &amp; <span class="accent">code</span>.</h1>
+    <p class="role">B.Tech CS &amp; IT student at REVA University, Bengaluru — exploring Python, machine learning, and how messy data turns into useful answers.</p>
+
+    <div class="terminal">
+      <div class="bar">
+        <div class="dot r"></div>
+        <div class="dot y"></div>
+        <div class="dot g"></div>
+        <div class="title">movie_review_analysis.py</div>
+      </div>
+      <pre><span class="com"># sample output from my sentiment classifier</span>
+&gt;&gt; review = "Excellent movie with amazing visuals"
+&gt;&gt; predict(review)
+<span class="pos">"Positive"</span>
+
+&gt;&gt; review = "Waste of time and money"
+&gt;&gt; predict(review)
+<span class="neg">"Negative"</span><span class="cursor"></span></pre>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="module-tag">module 01 — about</div>
+    <h2>About me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a first-year <strong>Computer Science &amp; IT</strong> student at <strong>REVA University</strong>, currently figuring out which corner of tech excites me the most — right now, that's data science and machine learning.</p>
+        <p>I like projects where I can see code turn into something useful: a model that predicts, a script that automates, or a small app that solves a real problem. Outside of coursework, I enjoy picking apart how things work and slowly building up a portfolio of small, hands-on projects.</p>
+        <p>This portfolio is a work in progress, just like me — more projects, skills, and experiments are on the way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="module-tag">module 02 — tech stack</div>
+    <h2>What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-head">Python <span class="skill-tag">primary</span></div>
+        <p>Used for data analysis, scripting, and machine learning projects with Pandas and Scikit-learn.</p>
+        <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-head">C++ <span class="skill-tag">core</span></div>
+        <p>Coursework foundation in object-oriented programming, data structures, and algorithms.</p>
+        <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-head">C <span class="skill-tag">core</span></div>
+        <p>Strong fundamentals in procedural programming, memory, and low-level logic.</p>
+        <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="module-tag">module 03 — featured build</div>
+    <h2>Movie Review Analysis</h2>
+    <div class="project-card">
+      <div class="project-head">
+        <div class="project-title">Sentiment analysis system for movie reviews</div>
+        <div class="project-meta">Python for Data Science · Academic project, 2025-26</div>
+      </div>
+      <p class="desc">A command-line application that collects movie reviews, cleans and processes the text, and uses a trained machine learning model to automatically classify each review as <strong style="color:var(--mint)">Positive</strong> or <strong style="color:var(--coral)">Negative</strong>. The system also lets users add, view, search, and delete reviews, and shows live statistics on overall sentiment distribution.</p>
+
+      <div class="stack">
+        <span>Python</span>
+        <span>Pandas</span>
+        <span>Scikit-learn</span>
+        <span>TF-IDF Vectorization</span>
+        <span>Multinomial Naive Bayes</span>
+        <span>CSV data storage</span>
+      </div>
+
+      <div class="modules">
+        <div class="module-item"><span class="num">01</span><span class="name">Review management</span></div>
+        <div class="module-item"><span class="num">02</span><span class="name">Data preprocessing</span></div>
+        <div class="module-item"><span class="num">03</span><span class="name">Feature extraction (TF-IDF)</span></div>
+        <div class="module-item"><span class="num">04</span><span class="name">Model training &amp; testing</span></div>
+        <div class="module-item"><span class="num">05</span><span class="name">Sentiment prediction</span></div>
+      </div>
+
+      <div class="project-links">
+        <a href="https://github.com/" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="demo">
+        <div class="demo-label">try a mini version of the idea — type a quick movie review</div>
+        <div class="demo-row">
+          <input type="text" id="reviewInput" placeholder="e.g. The visuals were stunning but the story was boring" />
+          <button onclick="analyzeReview()">Analyze</button>
+        </div>
+        <div class="demo-result" id="demoResult"></div>
+        <div class="demo-note">This is a simple keyword-based demo for fun — the real project uses TF-IDF + Naive Bayes trained on labeled review data.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="module-tag">module 04 — connect</div>
+    <h2>Get in touch</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:kiranrajcn4444@gmail.com">
+        <div class="label">email</div>
+        <div class="value">kiranrajcn4444@gmail.com</div>
+      </a>
+      <a class="contact-card" href="https://github.com/" target="_blank" rel="noopener">
+        <div class="label">github</div>
+        <div class="value">github.com/your-username</div>
+      </a>
+      <div class="contact-card">
+        <div class="label">based in</div>
+        <div class="value">Bengaluru, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  built with Python-flavored curiosity <span class="pos">// status: positive</span>
+</footer>
+
+<script>
+  const positiveWords = ["good","great","amazing","excellent","awesome","love","loved","fantastic","wonderful","best","brilliant","outstanding","beautiful","enjoyed","happy","perfect"];
+  const negativeWords = ["bad","worst","terrible","boring","awful","hate","hated","poor","waste","disappointing","horrible","slow","weak","dull","sad"];
+
+  function analyzeReview(){
+    const input = document.getElementById('reviewInput');
+    const result = document.getElementById('demoResult');
+    const text = input.value.toLowerCase();
+
+    if(!text.trim()){
+      result.innerHTML = '<span class="tag-neu">Type something first</span>';
+      return;
+    }
+
+    let score = 0;
+    positiveWords.forEach(w => { if(text.includes(w)) score++; });
+    negativeWords.forEach(w => { if(text.includes(w)) score--; });
+
+    if(score > 0){
+      result.innerHTML = '<span class="tag-pos">Predicted: Positive</span>';
+    } else if(score < 0){
+      result.innerHTML = '<span class="tag-neg">Predicted: Negative</span>';
+    } else {
+      result.innerHTML = '<span class="tag-neu">Predicted: Neutral / Unsure</span>';
+    }
+  }
+
+  document.getElementById('reviewInput').addEventListener('keypress', function(e){
+    if(e.key === 'Enter') analyzeReview();
+  });
+</script>
+
+</body>
+</html>
